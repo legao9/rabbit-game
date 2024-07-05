@@ -1,5 +1,5 @@
 # Unity Battle Rabbits
-很多东西不好在工作项目上尝试(比如 ECS),所以就有了本项目,我打算利用业余时间从头制作一个 3D 游戏, 前端主要用 lua 开发.后端用 skynet.  
+Lua Rabbit skynet.  
 # Status & Prerequisites
 ```
 Unity version: 2019.4.28f1
@@ -7,14 +7,12 @@ Platforms    :
 client for Windows Android IOS;  
 server only for Linux;
 ```
+21.06.28: Decided not to use Unity's Entities, mainly because it is not easy to hot-update and not easy to use, so I still use Lua to implement another set, and also move the battle and scene-related logic to Lua, and make it a practical project.
+20.03.08: Separate the server code to another git project
+19.07.03: Preliminary implementation of automatic pathfinding to find NPC dialogue and monster killing two tasks:
 
-
-21.06.28：决定不用 Unity 的 Entities 了，主要是不好热更，而且又不好用，所以还是用 lua 另外实现了一套 ，面也会把战斗，场景相关的逻辑也挪到 lua 上，做成可以实际用的项目吧。
-20.03.08：把服务器代码分隔到另外的 git 项目
-19.07.03：初步实现了自动寻路去找 npc 对话和打怪两种任务：    
-
-19.07.31：初步完成背包和 GM 系统             
-19.08.13：完成复活流程      
-19.08.28：最近经常在手机上测试，优化了一波：摄像机操作，资源预加载，对象池，和使用了 AutoLOD 插件为各场景节点生成了两级简模（其实很多模型在最远处时是可以用一个面片替代的，就是做成公告板永远面向摄像机，但没美术资源就算了），树的话删了不少上万三角面的了。灯光烘培改成用 Distance ShadowMask,近处实时阴影远处贴图。暂时可以在我的垃圾手机流畅运行了。    
-19.09.07：后端增加 buff:火，毒，冰冻，晕眩，吸血，扣属性(防御、攻击等)，沉默。详见 BuffActions.lua。前端目前只加了吸血和晕眩的效果。  
-19.09.18：增加各平台的图片格式管理工具，针对不同用途的图片使用不同深度，比如安卓平台时 ui 文件夹里的图片用 ETC2_RGBA8，模型图片用 ETC_RGB8 等等，在 iOS 就用 ASTC 系列的格式。详细见 unity 编辑器菜单：TextureFormatter   
+19.07.31: Preliminary completion of backpack and GM system
+19.08.13: Completed the resurrection process
+19.08.28: Recently, I often test on mobile phones and optimize: camera operation, resource preloading, object pool, and use AutoLOD plug-in to generate two-level simple models for each scene node (in fact, many models can be replaced by a patch when they are at the farthest distance, that is, to make a billboard always facing the camera, but there are no art resources), and deleted a lot of trees with tens of thousands of triangles. Changed the light baking to use Distance ShadowMask, near real-time shadows and distant maps. It can run smoothly on my crappy phone for now.
+19.09.07: Added buffs in the backend: fire, poison, freezing, stun, blood sucking, attribute deduction (defense, attack, etc.), silence. See BuffActions.lua for details. The front end currently only adds blood sucking and stun effects.
+19.09.18: Added image format management tools for each platform, using different depths for images with different purposes, such as ETC2_RGBA8 for images in the ui folder on the Android platform, ETC_RGB8 for model images, etc., and the ASTC series format is used on iOS. See the unity editor menu for details: TextureFormatter
